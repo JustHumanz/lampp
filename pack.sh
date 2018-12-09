@@ -3,7 +3,7 @@ if (( $EUID != 0 )); then
     echo "Please run as root"
     exit
 fi
-echo "Script for install Lampp(nginx,mariadb,phpmyadmin)"
+echo "Script for install Lampp(Nginx,Mariadb,Phpmyadmin,Php7.2)"
 read -p 'Username for mysql: ' user
 read -sp 'Password for mysql: ' pass
 echo
