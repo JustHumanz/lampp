@@ -45,7 +45,7 @@ fi
 #systemctl stop apache2 mysql nginx mariadb
 #systemctl disable apache2 mysql nginx mariadb
 apt purge apache2 mysql-server mysql-client nginx mariadb-server mariadb-client -y && apt autoremove -y
-apt update && sudo apt install nginx mariadb-server mariadb-client php-fpm curl -y
+apt update && sudo apt install nginx mariadb-server mariadb-client php-fpm curl php-mysql -y
 mkdir /opt/html
 echo "Starting and enable mariadb and nginx"
 systemctl start nginx mariadb
