@@ -7,11 +7,11 @@
   <b> How to install? </b>
 </p>  
 
-cd ~/
-git clone https://github.com/JustHumanz/lampp
-cd lampp
-chmod +x pack.sh
-sudo ./pack.sh
+cd ~/  
+git clone https://github.com/JustHumanz/lampp  
+cd lampp  
+chmod +x pack.sh  
+sudo ./pack.sh  
 
 <p align="center">
   <b> how to use this script </b>
