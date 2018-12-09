@@ -56,8 +56,10 @@ curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/1.conf  --sil
 mv /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf.backup
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/www.conf  --silent --output /etc/php/7.2/fpm/pool.d/www.conf
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/index.html  --silent --output   /opt/html/index.html
+echo <?php
+phpinfo(); > /opt/html/info.php
 apt install phpmyadmin -y
 ln -s /usr/share/phpmyadmin /opt/html
 echo 'Restarting php-fpm and nginx'
 systemctl restart php7.2-fpm.service nginx
-echo 'Try access http://localhost/phpmyadmin'
+echo 'Try access http://localhost/phpmyadmin and http://localhost/info.php for testing php' 
