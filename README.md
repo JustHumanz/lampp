@@ -14,7 +14,7 @@ chmod +x pack.sh
 sudo ./pack.sh  
 
 <p align="center">
-  <b> how to use this script </b>
+  <b> how to use this script? </b>
   <div align="center">
     <div align="center">
   <a href="https://www.youtube.com/watch?v=iDk40PQ0MS0">
