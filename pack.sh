@@ -52,6 +52,8 @@ systemctl start nginx mariadb
 systemctl enable nginx mariadb
 echo -e "\ny\ny\n$pass\n$pass\ny\ny\ny\ny" | /usr/bin/mysql_secure_installation
 mysql -u root -p$pass -e "GRANT USAGE ON *.* TO '$user'@localhost IDENTIFIED BY '$pass';"
+mysql -u root -p$pass -e "GRANT ALL PRIVILEGES ON * . * TO '$user'@'localhost';"
+mysql -u root -p$pass -e "FLUSH PRIVILEGES;"
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/1.conf  --silent --output /etc/nginx/conf.d/1.conf
 mv /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf.backup
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/www.conf  --silent --output /etc/php/7.2/fpm/pool.d/www.conf
