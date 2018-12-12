@@ -21,13 +21,13 @@ echo 'Check Service'
 lo=$(systemctl is-active nginx)
 if [[ $lo == "active" ]]; then
   echo 'disable nginx'
-  service nginx stop && service nginx disable || systemctl start nginx && systemctl enable nginx
+  service nginx stop && service nginx disable || systemctl start nginx 
 fi
 
 lo1=$(systemctl is-active apache2)
 if [[ $lo1 == "active" ]]; then
   echo 'disable apache2'
-  service apache2 stop && service apache2 disable || systemctl start apache2 && systemctl enable apache2
+  service apache2 stop && service apache2 disable || systemctl start apache2 
 fi
 
 lo2=$(systemctl is-active mysql)
@@ -48,10 +48,12 @@ apt purge apache2 mysql-server mysql-client nginx mariadb-server mariadb-client 
 apt update && sudo apt install nginx mariadb-server mariadb-client php-fpm curl php-mysql -y
 mkdir /opt/html
 echo "Starting and enable mariadb and nginx"
-service nginx start && service nginx enable
-service mariadb start && service mariadb enable  || service mysql start && service mysql enable
+service nginx start 
+service mariadb start || service mysql start && service mysql enable
 echo -e "\ny\ny\n$pass\n$pass\ny\ny\ny\ny" | /usr/bin/mysql_secure_installation
 mysql -u root -p$pass -e "GRANT USAGE ON *.* TO '$user'@localhost IDENTIFIED BY '$pass';"
+mysql -u root -p$pass -e "GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';"
+mysql -u root -p$pass -e "FLUSH PRIVILEGES;"
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/1.conf  --silent --output /etc/nginx/conf.d/1.conf
 mv /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf.backup
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/www.conf  --silent --output /etc/php/7.2/fpm/pool.d/www.conf
