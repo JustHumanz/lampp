@@ -48,8 +48,8 @@ apt purge apache2 mysql-server mysql-client nginx mariadb-server mariadb-client 
 apt update && sudo apt install nginx mariadb-server mariadb-client php-fpm curl php-mysql -y
 mkdir /opt/html
 echo "Starting and enable mariadb and nginx"
-service start nginx && service enable nginx
-service start mariadb && service enable mariadb 
+service nginx start && service  nginx enable
+service mariadb start && service  mariadb enable 
 echo -e "\ny\ny\n$pass\n$pass\ny\ny\ny\ny" | /usr/bin/mysql_secure_installation
 mysql -u root -p$pass -e "GRANT USAGE ON *.* TO '$user'@localhost IDENTIFIED BY '$pass';"
 curl https://raw.githubusercontent.com/JustHumanz/lampp/master/try/1.conf  --silent --output /etc/nginx/conf.d/1.conf
